@@ -1,32 +1,33 @@
 <?php
-    require_once('/dabatase/db_models.php');
+    require_once('/database/db_models.php');
 
     class task extends modelsCredentials{
-        protected $title;
-        protected $description;
-        protected $status;
-        protected $datetime;
-        protected $label;
-        protected $flag;
-        protected $type;
-        protected $user_id;
+        protected $cod;
+        protected $titulo;
+        protected $descripcion;
+        protected $estado;
+        protected $fecha_compromiso;
+        protected $etiqueta;
 
         public function __construct()
         {
             parent::__construct();
         }
 
-        public function consultar_task(){
-            $instruccion ="Select*from Tareas"
-
-            $consulta=$this->_db->query($instruccion);
-            $resultado=$consulta->fetch_all(MYSQLI_ASSOC);
-
-            if(!$resultado){
-
-            }
-            else{
-                return $resultado;
+        public function consultar_task() {
+            $instruccion = "Select * from Tareas";
+            $consulta = $this->_db->query($instruccion);
+            $res = $consulta->fetch_all(MYSQLI_ASSOC);
+             // Cierra la conexión a la base de datos
+        
+            if (!$res) {
+                echo "fallo al consultar tareas";
+                $consulta->close();  // Cierra la consulta
+                $this->_db->close();
+            } else {
+                return $res;
+                $consulta->close();  // Cierra la consulta
+                $this->_db->close();
             }
         }
     }
