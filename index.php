@@ -17,25 +17,23 @@
         <h1>Tareas</h1>
         <table>
             <tr>
-                <th>titulo</th>
-                <th>texto</th>
-                <th>categorias</th>
-                <th>fecha</th>
-                <th>imagen</th>
+                <th>Company</th>
+                <th>Contact</th>
+                <th>Country</th>
             </tr>
-
             <tr>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td>Alfreds Futterkiste</td>
+                <td>Maria Anders</td>
+                <td>Germany</td>
             </tr>
-
+            <tr>
+                <td>Centro comercial Moctezuma</td>
+                <td>Francisco Chang</td>
+                <td>Mexico</td>
+            </tr>
         </table>
         <?php
-            if($nfilas>0){
-                print ("<>")
 
-            }
         ?>
     </div>
     <footer>copyright</footer>
