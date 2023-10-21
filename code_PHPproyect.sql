@@ -17,5 +17,7 @@ primary key (cod)
 create table IF NOT EXISTS Usuarios(
 cod_user INT NOT NULL AUTO_INCREMENT,
 User_Name VARCHAR (10) NOT NULL,
+password VARCHAR (10) NOT NULL,
 primary key (cod_user)
 );
+
