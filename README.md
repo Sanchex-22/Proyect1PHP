@@ -6,10 +6,12 @@
 Para que la aplicación funcione correctamente, necesitas configurar una base de datos MySQL y crear las tablas necesarias. Sigue los siguientes pasos:
 
 1. **El archivo db_connection contiene:**
-    define('DB_HOST','localhost');
-    define('DB_USER','root');
-    define('DB_PASS','{TU CONTRASEÑA}');
-    define('DB_NAME','checktask');
+    ```dbconncetion
+        define('DB_HOST','localhost');
+        define('DB_USER','root');
+        define('DB_PASS','{TU CONTRASEÑA}');
+        define('DB_NAME','checktask');
+    ```
 
 2. **Crear la Base de Datos:**
 
