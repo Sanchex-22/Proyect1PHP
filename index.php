@@ -10,10 +10,6 @@
 <body>
     <Nav class="navbar">
         <ul class="nav-izq"><img src="#" alt="logo"></ul>
-        <ul class="nav-der">
-            <li><a href="#">Home</a></li>
-            <li><a href="pages/dashboard.php">Task</a></li>
-        </ul>
     </Nav>
     <div class="login">
         <h1>Login</h1>
@@ -29,25 +25,25 @@
         
         <?php
         session_start();
-        
-        // Verificar si el usuario y contraseña son correctos (aquí puedes agregar tu lógica de autenticación)
-        $correct_username = "usuario"; // Cambia esto al nombre de usuario correcto
-        $correct_password = "contrasena"; // Cambia esto a la contraseña correcta
-        
+        require_once('database/db_models.php'); // Asegúrate de incluir el archivo de conexión aquí
+        require_once('models/user_models.php'); // Incluye la nueva clase
+
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $username = $_POST["username"];
             $password = $_POST["password"];
-        
-            if ($username == $correct_username && $password == $correct_password) {
-                // Iniciar sesión y redirigir a la página de inicio
+
+            $auth = new users();
+            if ($auth->autenticar($username, $password)) {
                 $_SESSION["username"] = $username;
-                header("Location: home.php");
+                header("Location: pages/dashboard.php");
                 exit();
             } else {
                 echo "Usuario o contraseña incorrectos. Inténtalo de nuevo.";
             }
         }
         ?>
+
+
         
     </div>
 </body>

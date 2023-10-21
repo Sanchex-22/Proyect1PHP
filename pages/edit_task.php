@@ -26,7 +26,8 @@
 
             <button class="login-btn">Editar</button>
         </form>
-        <?php?>
+        <?php
+        ?>
     </div>
 </body>
 </html>
