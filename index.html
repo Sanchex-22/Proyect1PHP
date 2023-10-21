@@ -5,54 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Proyecto 1</title>
     <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="/css/login.css">
 </head>
 <body>
     <Nav class="navbar">
         <ul class="nav-izq"><img src="#" alt="logo"></ul>
         <ul class="nav-der">
-            <li>Home</li>
-            <li>Task</li>
+            <li><a href="#">Home</a></li>
+            <li><a href="pages/dashboard.html">Task</a></li>
         </ul>
     </Nav>
-    <div class="dashboard">
-        <h1>Tareas</h1>
-        <button class="create-btn">New Task</button>
-        <table>
-            <tr>
-                <th>#</th>
-                <th>title</th>
-                <th>description</th>
-                <th>status</th>
-                <th>option</th>
-            </tr>
-            <!--Esto seria lo que hay que mapear-->
-            <tr>
-                <td>Alfreds Futterkiste</td>
-                <td>Maria Anders</td>
-                <td>Germany</td>
-                <td>Germany</td>
-                <td>
-                    <button class="edit-btn">Edit</button>
-                    <button class="eliminate-btn">Eliminate</button>
-                </td>
-            </tr>
+    <div class="login">
+        <h1>Login</h1>
+        <form class="formulario" action="" method="post">
+            <label for="user">Usuario</label>
+            <input type="text" name="user" id="">
 
-            <tr>
-                <td>3</td>
-                <td>Mate</td>
-                <td>Germany</td>
-                <td>Germany</td>
-                <td>
-                    <button class="edit-btn">Edit</button>
-                    <button class="eliminate-btn">Eliminate</button>
-                </td>
-            </tr>
+            <label for="pass">Contraseña</label>
+            <input type="text" name="pass" id="">
 
-        </table>
-        <?php
-
-        ?>
+            <button class="login-btn">Enviar</button>
+        </form>
+        <?php?>
     </div>
-    <footer>copyright</footer>
 </body>
 </html>
