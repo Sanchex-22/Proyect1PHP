@@ -11,8 +11,8 @@
     <Nav class="navbar">
         <ul class="nav-izq"><img src="#" alt="logo"></ul>
         <ul class="nav-der">
-            <li><a href="../index.html">Home</a></li>
-            <li><a href="dashboard.html">Task</a></li>
+            <li><a href="../index.php">Home</a></li>
+            <li><a href="dashboard.php">Task</a></li>
         </ul>
     </Nav>
     <div class="login">

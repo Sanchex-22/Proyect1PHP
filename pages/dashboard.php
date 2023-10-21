@@ -12,7 +12,7 @@
     <Nav class="navbar">
         <ul class="nav-izq"><img src="#" alt="logo"></ul>
         <ul class="nav-der">
-            <li><a href="../index.html">Home</a></li>
+            <li><a href="../index.php">Home</a></li>
             <li><a href="#">Task</a></li>
         </ul>
     </Nav>
@@ -63,7 +63,7 @@
 
         </table>
         <?php
-        hoa
+        
         ?>
     </div>
     <script src="redirect.js"></script>
