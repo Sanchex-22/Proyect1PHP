@@ -1,3 +1,12 @@
+<?php
+     session_start();
+
+     if (!isset($_SESSION["username"])) {
+         header("Location: index.php");
+         exit();
+     }
+     $username = $_SESSION["username"];
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,36 +18,65 @@
 </head>
 <body>
     <Nav class="navbar">
-        <ul class="nav-izq"><img src="#" alt="logo"></ul>
-        <ul class="nav-der">
+        <ul class="nav-izq">
+            <img src="#" alt="logo">
             <li><a href="index.php">Home</a></li>
-            <li><a href="dashboard.php">Task</a></li>
+            <li><a href="#">Task</a></li>
+        </ul>
+        <ul class="nav-der">
+            <li><?php echo $_SESSION["username"]; ?></li>
+            <li>
+            <form action="logout.php" method="post">
+                <button type="submit" value="Logout">Logout</button>
+            </form>
+            </li>
         </ul>
     </Nav>
-    <?php
-    // Verificar si el ID de la tarea se ha proporcionado en la URL
-    if (isset($_GET['id'])) {
-        $taskId = $_GET['id'];
-        echo "válido.".$taskId;
-        // Aquí puedes cargar y mostrar la tarea con el ID proporcionado
-        // ...
-    } else {
-        // Si no se proporciona un ID válido, puedes manejar el caso de error aquí
-        echo "Error: No se ha proporcionado un ID de tarea válido.";
-    }
-    ?>
+
     <div class="login">
         <h1>Edit Tarea</h1>
-        <form class="formulario" action="" method="post">
-            <label for="user">titulo</label>
-            <input type="text" name="titulo" id="">
+        <form action="" method="post">
+            <label for="titulo">Título:</label>
+            <input type="text" id="titulo" name="titulo" required><br>
 
-            <label for="pass">descripcion</label>
-            <input type="text" name="descripcion" id="">
+            <label for="descripcion">Descripción:</label>
+            <textarea id="descripcion" name="descripcion" required></textarea><br>
 
-            <button class="login-btn">Editar</button>
+            <label for="estado">Estado:</label>
+            <select id="estado" name="estado" required>
+                <option value="Por Hacer">Por Hacer</option>
+                <option value="En Progreso">En Progreso</option>
+                <option value="Terminada" >Terminada</option>
+            </select><br>
+
+            <label for="fecha_compromiso">Fecha Compromiso:</label>
+            <input type="datetime-local" id="fecha_compromiso" name="fecha_compromiso" value="" required><br>
+
+            <input type="submit" value="Guardar Cambios">
         </form>
         <?php
+        if (isset($_GET['id'])) {
+            $taskId = $_GET['id'];
+            echo "válido.".$taskId;
+
+            if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                // Conectar a la base de datos (asegúrate de incluir tu archivo de conexión)
+                require_once('models/taskmodels.php');
+                // Obtener los valores del formulario
+                $id = $taskId;
+                $titulo = $_POST["titulo"];
+                $descripcion = $_POST["descripcion"];
+                $estado = $_POST["estado"];
+                $fecha_compromiso = $_POST["fecha_compromiso"];
+                $etiqueta = $username;
+                $task1 = new task();
+                $task1->edit_task($id,$titulo,$descripcion,$estado,$fecha_compromiso,$etiqueta);
+            }
+        } else {
+            // Si no se proporciona un ID válido, puedes manejar el caso de error aquí
+            echo "Error: No se ha proporcionado un ID de tarea válido.";
+        }
+
         ?>
     </div>
 </body>

@@ -17,16 +17,41 @@
     </Nav>
     <div class="login">
         <h1>Crear Tarea</h1>
-        <form class="formulario" action="" method="post">
-            <label for="user">titulo</label>
-            <input type="text" name="titulo" id="">
+        <form action="" method="post">
+            <label for="titulo">Título:</label>
+            <input type="text" id="titulo" name="titulo" required><br>
 
-            <label for="pass">descripcion</label>
-            <input type="text" name="descripcion" id="">
+            <label for="descripcion">Descripción:</label>
+            <textarea id="descripcion" name="descripcion" required></textarea><br>
 
-            <button class="login-btn">Crear</button>
+            <label for="estado">Estado:</label>
+            <select id="estado" name="estado" required>
+                <option value="Por Hacer">Por Hacer</option>
+                <option value="En Progreso">En Progreso</option>
+                <option value="Terminada">Terminada</option>
+            </select><br>
+
+            <label for="fecha_compromiso">Fecha Compromiso:</label>
+            <input type="datetime-local" id="fecha_compromiso" name="fecha_compromiso" required><br>
+
+            <label for="etiqueta">Etiqueta:</label>
+            <input type="text" id="etiqueta" name="etiqueta" required><br>
+
+            <input type="submit" value="Agregar Tarea">
         </form>
+
         <?php
+        require_once('models/taskmodels.php');
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            // Obtener los valores del formulario
+            $titulo = $_POST["titulo"];
+            $descripcion = $_POST["descripcion"];
+            $estado = $_POST["estado"];
+            $fecha_compromiso = $_POST["fecha_compromiso"];
+            $etiqueta = $_POST["etiqueta"];
+            $task1 = new task();
+            $task1->create_task($titulo,$descripcion,$estado,$fecha_compromiso,$etiqueta);
+        }
         ?>
     </div>
 </body>

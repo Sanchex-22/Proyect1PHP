@@ -90,7 +90,7 @@ $username = $_SESSION["username"];
         </table>
 
     </div>
-    <script src="redirect.js"></script>
+    <script src="scripts/redirect.js"></script>
     <footer>copyright</footer>
 </body>
 </html>
