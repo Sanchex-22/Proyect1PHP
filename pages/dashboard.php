@@ -49,7 +49,7 @@ $username = $_SESSION["username"];
                     <button class="eliminate-btn">Eliminate</button>
                 </td>
             </tr>
-
+            <!--Hasta aqui-->
             <tr>
                 <td>Alfreds Futterkiste</td>
                 <td>Maria Anders</td>

@@ -21,12 +21,11 @@ Para que la aplicación funcione correctamente, necesitas configurar una base de
     use checktask;
 
     create table IF NOT EXISTS Tareas(
-
     cod INT not null AUTO_INCREMENT,
     Titulo CHAR(20) not null,
     Descripcion VARCHAR (100) not null,
-    Estado CHAR (10) not null,
-    CHECK (Estado = 'Por Hacer' or 'En Progreso' or 'Terminada'),
+    Estado CHAR (20) not null,
+    CHECK (Estado = 'Por Hacer' OR Estado = 'En Progreso' OR Estado = 'Terminada'),
     Fecha_Compromiso DATETIME not null,
     Etiqueta CHAR (10),
     primary key (cod)

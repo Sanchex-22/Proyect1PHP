@@ -1,5 +1,5 @@
 <?php
-    require_once('/database/db_models.php');
+    require_once('database/db_models.php');
 
     class task extends modelsCredentials{
         protected $cod;
