@@ -73,7 +73,9 @@ $username = $_SESSION["username"];
                     <td><?php echo $tarea['Fecha_Compromiso']; ?></td>
                     <td><?php echo $tarea['Etiqueta']; ?></td>
                     <td>
-                    <button class="edit-btn">Editar</button>
+                    <!-- btn Editar -->
+                    <a href="edit_task.php?id=<?php echo $tarea['cod']; ?>" class="edit-btn">Editar</a>
+                    <!-- btn Eliminar -->
                      <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
                         <input type="hidden" name="action" value="eliminar">
                         <input type="hidden" name="task_id" value="<?php echo $tarea['cod']; ?>">
