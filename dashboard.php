@@ -20,10 +20,18 @@ $username = $_SESSION["username"];
 <body>
 
     <Nav class="navbar">
-        <ul class="nav-izq"><img src="#" alt="logo"></ul>
-        <ul class="nav-der">
+        <ul class="nav-izq">
+            <img src="#" alt="logo">
             <li><a href="index.php">Home</a></li>
             <li><a href="#">Task</a></li>
+        </ul>
+        <ul class="nav-der">
+            <li><?php echo $_SESSION["username"]; ?></li>
+            <li>
+            <form action="logout.php" method="post">
+                <button type="submit" value="Logout">Logout</button>
+            </form>
+            </li>
         </ul>
     </Nav>
     <div class="dashboard">

@@ -25,6 +25,10 @@
         
         <?php
         session_start();
+        if (isset($_SESSION["username"])) {
+            header("Location: dashboard.php");
+            exit();
+        }
         require_once('database/db_models.php'); // Asegúrate de incluir el archivo de conexión aquí
         require_once('models/user_models.php'); // Incluye la nueva clase
 
