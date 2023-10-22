@@ -18,17 +18,22 @@
             $instruccion = "Select * from Tareas";
             $consulta = $this->_db->query($instruccion);
             $res = $consulta->fetch_all(MYSQLI_ASSOC);
-             // Cierra la conexión a la base de datos
+            
+            $consulta->close();  // Cierra la consulta
+            $this->_db->close();
+
+            return $res;
+        }
         
-            if (!$res) {
-                echo "fallo al consultar tareas";
-                $consulta->close();  // Cierra la consulta
-                $this->_db->close();
+        public function eliminar_task($id){
+            $taskId = $this->_db->real_escape_string($id);
+            $sql = "DELETE FROM Tareas WHERE cod = '$taskId'";
+            if ($this->_db->query($sql) === TRUE) {
+                echo "La tarea fue eliminada con éxito";
             } else {
-                return $res;
-                $consulta->close();  // Cierra la consulta
-                $this->_db->close();
+                echo "Error al eliminar la tarea: " . $this->_db->error;
             }
+            
         }
     }
 

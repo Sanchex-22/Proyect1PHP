@@ -35,7 +35,7 @@
             $auth = new users();
             if ($auth->autenticar($username, $password)) {
                 $_SESSION["username"] = $username;
-                header("Location: pages/dashboard.php");
+                header("Location: dashboard.php");
                 exit();
             } else {
                 echo "Usuario o contraseña incorrectos. Inténtalo de nuevo.";
