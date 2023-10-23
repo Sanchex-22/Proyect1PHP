@@ -8,6 +8,7 @@ if (!isset($_SESSION["username"])) {
 }
 $username = $_SESSION["username"];
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,7 +24,7 @@ $username = $_SESSION["username"];
         <ul class="nav-izq">
             <img src="#" alt="logo">
             <li><a href="index.php">Home</a></li>
-            <li><a href="#">Task</a></li>
+            <li><a href="task_list.php">Task</a></li>
         </ul>
         <ul class="nav-der">
             <li><?php echo $_SESSION["username"]; ?></li>
