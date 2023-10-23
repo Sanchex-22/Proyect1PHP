@@ -6,7 +6,8 @@
 Para que la aplicación funcione correctamente, necesitas configurar una base de datos MySQL y crear las tablas necesarias. Sigue los siguientes pasos:
 
 1. **El archivo db_connection contiene:**
-    ```dbconncetion
+    ```
+        dbconncetion
         define('DB_HOST','localhost');
         define('DB_USER','root');
         define('DB_PASS','{TU CONTRASEÑA}');
@@ -16,7 +17,7 @@ Para que la aplicación funcione correctamente, necesitas configurar una base de
 2. **Crear la Base de Datos:**
 
    ```sql
-  CREATE DATABASE IF NOT EXISTS checktask;
+    CREATE DATABASE IF NOT EXISTS checktask;
 
     use checktask;
 
@@ -28,7 +29,7 @@ Para que la aplicación funcione correctamente, necesitas configurar una base de
     Estado CHAR (11) not null,
     Fecha_Compromiso DATETIME not null,
     Responsable CHAR (10) not null,
-    Etiqueta char(7),
+    Etiqueta char(9),
     primary key (cod)
     );
 
@@ -39,6 +40,6 @@ Para que la aplicación funcione correctamente, necesitas configurar una base de
     primary key (cod_user)
     );
 
-    insert into Usuarios (User_Name, password) values ("jose123","perro1234");
+    insert into Usuarios (User_Name, password) values ("carlos","123");
 
    ```

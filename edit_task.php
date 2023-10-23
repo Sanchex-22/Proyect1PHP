@@ -17,11 +17,12 @@
     <link rel="stylesheet" href="css/edit_task.css">
 </head>
 <body>
+    
     <Nav class="navbar">
         <ul class="nav-izq">
             <img src="#" alt="logo">
-            <li><a href="index.php">Home</a></li>
-            <li><a href="#">Task</a></li>
+            <li><a href="dashboard.php">Home</a></li>
+            <li><a href="report.php">Report</a></li>
         </ul>
         <ul class="nav-der">
             <li><?php echo $_SESSION["username"]; ?></li>

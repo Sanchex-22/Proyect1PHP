@@ -10,7 +10,7 @@ Descripcion VARCHAR (100) not null,
 Estado CHAR (11) not null,
 Fecha_Compromiso DATETIME not null,
 Responsable CHAR (10) not null,
-Etiqueta char(7),
+Etiqueta char(9),
 primary key (cod)
 );
 
@@ -21,5 +21,6 @@ password VARCHAR (10) NOT NULL,
 primary key (cod_user)
 );
 
-insert into Usuarios (User_Name, password) values ("jose123","perro1234");
+insert into Usuarios (User_Name, password) values ("carlos","123");
+
 
