@@ -7,10 +7,10 @@ create table IF NOT EXISTS Tareas(
 cod INT not null AUTO_INCREMENT,
 Titulo CHAR(20) not null,
 Descripcion VARCHAR (100) not null,
-Estado CHAR (10) not null,
-CHECK (Estado = 'Por Hacer' or 'En Progreso' or 'Terminada'),
+Estado CHAR (11) not null,
 Fecha_Compromiso DATETIME not null,
-Etiqueta CHAR (10),
+Responsable CHAR (10) not null,
+Etiqueta char(7),
 primary key (cod)
 );
 
@@ -20,4 +20,6 @@ User_Name VARCHAR (10) NOT NULL,
 password VARCHAR (10) NOT NULL,
 primary key (cod_user)
 );
+
+insert into Usuarios (User_Name, password) values ("jose123","perro1234");
 

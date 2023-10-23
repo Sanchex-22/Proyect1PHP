@@ -18,13 +18,17 @@
             <input type="text" id="username" name="username" required>
 
             <label for="pass">Contraseña</label>
-            <input type="text" id="password" name="password" required>
+            <input type="password" id="password" name="password" required>
 
             <input class="login-btn" type="submit" value="Iniciar Sesión">
         </form>
         
         <?php
         session_start();
+        if (isset($_SESSION["username"])) {
+            header("Location: dashboard.php");
+            exit();
+        }
         require_once('database/db_models.php'); // Asegúrate de incluir el archivo de conexión aquí
         require_once('models/user_models.php'); // Incluye la nueva clase
 
@@ -35,7 +39,7 @@
             $auth = new users();
             if ($auth->autenticar($username, $password)) {
                 $_SESSION["username"] = $username;
-                header("Location: pages/dashboard.php");
+                header("Location: dashboard.php");
                 exit();
             } else {
                 echo "Usuario o contraseña incorrectos. Inténtalo de nuevo.";
