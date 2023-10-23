@@ -59,7 +59,7 @@
             Estado='$estado', 
             Fecha_Compromiso='$fecha_compromiso',
             Responsable='$responsable',
-            Etiqueta = 'Editado'
+            Etiqueta = '(Editado)'
             WHERE cod='$id'";
 
             if ($this->_db->query($sql) === TRUE) {

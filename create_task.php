@@ -18,33 +18,44 @@
 </head>
 <body>
     <Nav class="navbar">
-        <ul class="nav-izq"><img src="#" alt="logo"></ul>
+        <ul class="nav-izq">
+            <li><img src="img/logo.png" alt="logo" style="height: 40px; width: 40px;"></li>
+            <li><a href="dashboard.php">Home</a></li>
+            <li><a href="report.php">Report</a></li>
+        </ul>
         <ul class="nav-der">
-            <li><a href="index.php">Home</a></li>
-            <li><a href="dashboard.php">Task</a></li>
+            <li><?php echo $_SESSION["username"]; ?></li>
+            <li>
+            <form action="logout.php" method="post">
+                <button type="submit" value="Logout" class="btn-logout">Logout</button>
+            </form>
+            </li>
         </ul>
     </Nav>
-    <div class="login">
+    <div class="crear-card">
+        <div class="formulario">
         <h1>Crear Tarea</h1>
         <form action="" method="post">
-            <label for="titulo">Título:</label>
-            <input type="text" id="titulo" name="titulo" required><br>
+            <label for="titulo">Título:</label><br>
+            <input type="text" id="titulo" name="titulo" required class="inputs"><br>
 
-            <label for="descripcion">Descripción:</label>
-            <textarea id="descripcion" name="descripcion" required></textarea><br>
+            <label for="descripcion">Descripción:</label><br>
+            <textarea id="descripcion" name="descripcion" required class="inputs"></textarea><br>
 
             <label for="estado">Estado:</label>
-            <select id="estado" name="estado" required>
+            <select id="estado" name="estado" required class="inputs">
                 <option value="Por Hacer">Por Hacer</option>
                 <option value="En Progreso">En Progreso</option>
                 <option value="Terminada">Terminada</option>
             </select><br>
 
-            <label for="fecha_compromiso">Fecha Compromiso:</label>
-            <input type="datetime-local" id="fecha_compromiso" name="fecha_compromiso" required><br>
+            <label for="fecha_compromiso">Fecha Compromiso:</label><br>
+            <input type="datetime-local" id="fecha_compromiso" name="fecha_compromiso" required class="inputs"><br>
 
-            <input type="submit" value="Agregar Tarea">
+            <input type="submit" value="Agregar Tarea" class="btn-crear">
+            <a href="dashboard.php" class="btn-cancelar">Cancelar</a>
         </form>
+        </div>
 
         <?php
         require_once('models/taskmodels.php');
