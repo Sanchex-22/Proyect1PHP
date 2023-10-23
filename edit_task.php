@@ -68,9 +68,13 @@
                 $descripcion = $_POST["descripcion"];
                 $estado = $_POST["estado"];
                 $fecha_compromiso = $_POST["fecha_compromiso"];
-                $etiqueta = $username;
+                $responsable = $username;
                 $task1 = new task();
-                $task1->edit_task($id,$titulo,$descripcion,$estado,$fecha_compromiso,$etiqueta);
+                if($task1->edit_task($id,$titulo,$descripcion,$estado,$fecha_compromiso,$responsable)){
+                    header("Location: dashboard.php");
+                }
+
+                
             }
         } else {
             // Si no se proporciona un ID válido, puedes manejar el caso de error aquí

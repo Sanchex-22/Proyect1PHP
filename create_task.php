@@ -1,3 +1,12 @@
+<?php
+     session_start();
+
+     if (!isset($_SESSION["username"])) {
+         header("Location: index.php");
+         exit();
+     }
+     $username = $_SESSION["username"];
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -34,9 +43,6 @@
             <label for="fecha_compromiso">Fecha Compromiso:</label>
             <input type="datetime-local" id="fecha_compromiso" name="fecha_compromiso" required><br>
 
-            <label for="etiqueta">Etiqueta:</label>
-            <input type="text" id="etiqueta" name="etiqueta" required><br>
-
             <input type="submit" value="Agregar Tarea">
         </form>
 
@@ -48,9 +54,9 @@
             $descripcion = $_POST["descripcion"];
             $estado = $_POST["estado"];
             $fecha_compromiso = $_POST["fecha_compromiso"];
-            $etiqueta = $_POST["etiqueta"];
+            $responsable = $username;
             $task1 = new task();
-            $task1->create_task($titulo,$descripcion,$estado,$fecha_compromiso,$etiqueta);
+            $task1->create_task($titulo,$descripcion,$estado,$fecha_compromiso,$responsable);
         }
         ?>
     </div>

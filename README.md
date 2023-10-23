@@ -16,18 +16,19 @@ Para que la aplicación funcione correctamente, necesitas configurar una base de
 2. **Crear la Base de Datos:**
 
    ```sql
-    CREATE DATABASE IF NOT EXISTS checktask;
+  CREATE DATABASE IF NOT EXISTS checktask;
 
     use checktask;
 
     create table IF NOT EXISTS Tareas(
+
     cod INT not null AUTO_INCREMENT,
     Titulo CHAR(20) not null,
     Descripcion VARCHAR (100) not null,
-    Estado CHAR (20) not null,
-    CHECK (Estado = 'Por Hacer' OR Estado = 'En Progreso' OR Estado = 'Terminada'),
+    Estado CHAR (11) not null,
     Fecha_Compromiso DATETIME not null,
-    Etiqueta CHAR (10),
+    Responsable CHAR (10) not null,
+    Etiqueta char(7),
     primary key (cod)
     );
 
@@ -37,5 +38,7 @@ Para que la aplicación funcione correctamente, necesitas configurar una base de
     password VARCHAR (10) NOT NULL,
     primary key (cod_user)
     );
+
+    insert into Usuarios (User_Name, password) values ("jose123","perro1234");
 
    ```

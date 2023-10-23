@@ -7,7 +7,7 @@
         protected $descripcion;
         protected $estado;
         protected $fecha_compromiso;
-        protected $etiqueta;
+        protected $responsable;
 
         public function __construct()
         {
@@ -36,10 +36,10 @@
             return $res;
         }
 
-        public function create_task($titulo,$descripcion,$estado,$fecha_compromiso,$etiqueta){
+        public function create_task($titulo,$descripcion,$estado,$fecha_compromiso,$responsable){
             // Preparar la consulta SQL para insertar la tarea
-            $sql = "INSERT INTO tareas (Titulo, Descripcion, Estado, Fecha_Compromiso, Etiqueta)
-            VALUES ('$titulo', '$descripcion', '$estado', '$fecha_compromiso', '$etiqueta')";
+            $sql = "INSERT INTO tareas (Titulo, Descripcion, Estado, Fecha_Compromiso, Responsable)
+            VALUES ('$titulo', '$descripcion', '$estado', '$fecha_compromiso', '$responsable')";
 
             // Ejecutar la consulta
             if ($this->_db->query($sql) === TRUE) {
@@ -52,13 +52,14 @@
             $this->_db->close();
         }
 
-        public function edit_task($id,$titulo,$descripcion,$estado,$fecha_compromiso,$etiqueta){
+        public function edit_task($id,$titulo,$descripcion,$estado,$fecha_compromiso,$responsable){
             $sql = "UPDATE tareas SET 
             Titulo='$titulo', 
             Descripcion='$descripcion', 
             Estado='$estado', 
-            Fecha_Compromiso='$fecha_compromiso', 
-            Etiqueta='$etiqueta' 
+            Fecha_Compromiso='$fecha_compromiso',
+            Responsable='$responsable',
+            Etiqueta = 'Editado'
             WHERE cod='$id'";
 
             if ($this->_db->query($sql) === TRUE) {
