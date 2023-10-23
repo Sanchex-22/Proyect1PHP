@@ -13,7 +13,7 @@
         {
             parent::__construct();
         }
-
+ 
         public function consultar_task() {
             $instruccion = "Select * from Tareas";
             $consulta = $this->_db->query($instruccion);
