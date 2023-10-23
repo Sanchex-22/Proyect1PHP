@@ -15,13 +15,13 @@ $username = $_SESSION["username"];
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="index.css">
-    <link rel="stylesheet" href="css/task_list.css">
+    <link rel="stylesheet" href="css/dashboard1.css">
 </head>
 <body>
 
     <Nav class="navbar">
         <ul class="nav-izq">
-            <img src="#" alt="logo">
+            <li><img src="img/logo.png" alt="logo" style="height: 40px; width: 40px;"></li>
             <li><a href="#">Home</a></li>
             <li><a href="report.php">Report</a></li>
         </ul>
@@ -29,7 +29,7 @@ $username = $_SESSION["username"];
             <li><?php echo $_SESSION["username"]; ?></li>
             <li>
             <form action="logout.php" method="post">
-                <button type="submit" value="Logout">Logout</button>
+                <button type="submit" value="Logout" class="btn-logout">Logout</button>
             </form>
             </li>
         </ul>
