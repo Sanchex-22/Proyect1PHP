@@ -59,7 +59,20 @@ $username = $_SESSION["username"];
             $tarea = new task();
             // Obtén las tareas desde la base de datos
             $tareas = $tarea->consultar_task();
-            foreach ($tareas as $tarea) : ?>
+
+            foreach ($tareas as $tarea) {
+                if ($tarea['Estado'] === 'En Proceso') {
+                    $tareasEnProceso[] = $tarea;
+                } 
+                else if($tarea['Estado'] === 'Por Hacer') {
+                    $tareasPorHacer[] = $tarea;
+                }
+                else{
+                    $tareasTerminadas[] = $tarea;
+                }
+            }
+            if (!empty($tareasPorHacer)):
+            foreach ($tareasPorHacer as $tarea) : ?>
                 <div class="task">
                     <div class="box-x">
                     <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
@@ -81,6 +94,7 @@ $username = $_SESSION["username"];
                     </div>
                 </div>
             <?php endforeach; ?>
+            <?php endif; ?>
 
         </div>
 
@@ -88,20 +102,30 @@ $username = $_SESSION["username"];
             <div class="tittle-card2"><h3>En Proceso</h3></div>
 
             <!-- Tareas Mapping -->
-            <div class="task">
-                <div class="box-x">
-                    <button class="btn-eliminar">X</button>
+            <?php if (!empty($tareasEnProceso)):?>
+            <?php foreach ($tareasEnProceso as $tarea) : ?>
+                <div class="task">
+                    <div class="box-x">
+                    <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+                        <input type="hidden" name="action" value="eliminar">
+                        <input type="hidden" name="task_id" value="<?php echo $tarea['cod']; ?>">
+                        <button type="submit" class="btn-eliminar">X</button>
+                    </form>   
+                    </div>
+                    <div>
+                        <!-- <h4>#<?php echo $tarea['cod']; ?></h4> -->
+                        <h4>Titulo:<?php echo $tarea['Titulo']; ?><?php echo $tarea['Etiqueta']; ?></h4>
+                        <p>Estado:<?php echo $tarea['Estado']; ?></p>
+                        <p><?php echo $tarea['Descripcion']; ?></p>
+                        <p>por:<?php echo $tarea['Responsable']; ?></p>
+                        <p>fecha:<?php echo $tarea['Fecha_Compromiso']; ?></p>
+                    </div>
+                    <div>
+                        <a href="edit_task.php?id=<?php echo $tarea['cod']; ?>" class="btn-editar">Editar</a>
+                    </div>
                 </div>
-                <div>
-                    <h4>#</h4>
-                    <h4>Titulo</h4>
-                    <p>descripcion</p>
-                    <p>por:</p>
-                </div>
-                <div>
-                    <button class="btn-editar">Editar</button>
-                </div>
-            </div>
+            <?php endforeach; ?>
+            <?php endif; ?>
 
         </div>
 
@@ -109,20 +133,30 @@ $username = $_SESSION["username"];
             <div class="tittle-card3"><h3>Terminada</h3></div>
 
             <!-- Tareas Mapping -->
-            <div class="task">
-                <div class="box-x">
-                    <button class="btn-eliminar">X</button>
+            <?php if (!empty($tareasTerminadas)):?>
+            <?php foreach ($tareasTerminadas as $tarea) : ?>
+                <div class="task">
+                    <div class="box-x">
+                    <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+                        <input type="hidden" name="action" value="eliminar">
+                        <input type="hidden" name="task_id" value="<?php echo $tarea['cod']; ?>">
+                        <button type="submit" class="btn-eliminar">X</button>
+                    </form>   
+                    </div>
+                    <div>
+                        <!-- <h4>#<?php echo $tarea['cod']; ?></h4> -->
+                        <h4>Titulo:<?php echo $tarea['Titulo']; ?><?php echo $tarea['Etiqueta']; ?></h4>
+                        <p>Estado:<?php echo $tarea['Estado']; ?></p>
+                        <p><?php echo $tarea['Descripcion']; ?></p>
+                        <p>por:<?php echo $tarea['Responsable']; ?></p>
+                        <p>fecha:<?php echo $tarea['Fecha_Compromiso']; ?></p>
+                    </div>
+                    <div>
+                        <a href="edit_task.php?id=<?php echo $tarea['cod']; ?>" class="btn-editar">Editar</a>
+                    </div>
                 </div>
-                <div>
-                    <h4>#</h4>
-                    <h4>Titulo</h4>
-                    <p>descripcion</p>
-                    <p>por:</p>
-                </div>
-                <div>
-                    <button class="btn-editar">Editar</button>
-                </div>
-            </div>
+            <?php endforeach; ?>
+            <?php endif; ?>
 
         </div>
 
@@ -130,4 +164,5 @@ $username = $_SESSION["username"];
     <script src="scripts/redirect.js"></script>
 
 </body>
+
 </html>
