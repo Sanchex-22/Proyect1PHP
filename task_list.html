@@ -1,0 +1,109 @@
+<?php
+session_start();
+
+// Verificar si el usuario está autenticado
+if (!isset($_SESSION["username"])) {
+    header("Location: index.php");
+    exit();
+}
+$username = $_SESSION["username"];
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="css/task_list.css">
+</head>
+<body>
+
+    <Nav class="navbar">
+        <ul class="nav-izq">
+            <img src="#" alt="logo">
+            <li><a href="index.php">Home</a></li>
+            <li><a href="#">Task</a></li>
+        </ul>
+        <ul class="nav-der">
+            <li><?php echo $_SESSION["username"]; ?></li>
+            <li>
+            <form action="logout.php" method="post">
+                <button type="submit" value="Logout">Logout</button>
+            </form>
+            </li>
+        </ul>
+    </Nav>
+    <div class="body-tittle">
+        <h1>Tareas</h1>
+    </div>
+    <div class="body-list">
+        
+        <div class="card">
+            <div class="tittle-card"><h3>Por hacer</h3></div>
+            <button class="btn-crear">+ Añadir tarea</button>
+
+            <!-- Tareas Mapping -->
+            <div class="task">
+                <div class="box-x">
+                    <button class="btn-eliminar">X</button>
+                </div>
+                <div>
+                    <h4>#</h4>
+                    <h4>Titulo</h4>
+                    <p>descripcion</p>
+                    <p>por:</p>
+                </div>
+                <div>
+                    <button class="btn-editar">Editar</button>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="card2">
+            <div class="tittle-card2"><h3>En Proceso</h3></div>
+
+            <!-- Tareas Mapping -->
+            <div class="task">
+                <div class="box-x">
+                    <button class="btn-eliminar">X</button>
+                </div>
+                <div>
+                    <h4>#</h4>
+                    <h4>Titulo</h4>
+                    <p>descripcion</p>
+                    <p>por:</p>
+                </div>
+                <div>
+                    <button class="btn-editar">Editar</button>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="card3">
+            <div class="tittle-card3"><h3>Terminada</h3></div>
+
+            <!-- Tareas Mapping -->
+            <div class="task">
+                <div class="box-x">
+                    <button class="btn-eliminar">X</button>
+                </div>
+                <div>
+                    <h4>#</h4>
+                    <h4>Titulo</h4>
+                    <p>descripcion</p>
+                    <p>por:</p>
+                </div>
+                <div>
+                    <button class="btn-editar">Editar</button>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+</html>
