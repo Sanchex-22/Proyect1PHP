@@ -51,6 +51,16 @@
                 <option value="Terminada" >Terminada</option>
             </select><br>
 
+            <label for="tipo">Categoria:</label>
+            <select id="tipo" name="tipo" required class="inputs">
+                <option value="Escolar">Escolar</option>
+                <option value="Del Hogar">Del Hogar</option>
+                <option value="Obligatorio" >Obligatorio</option>
+                <option value="Rutinario" >Rutinario</option>
+                <option value="Temporal" >Temporal</option>
+                <option value="Otro" >Otro</option>
+            </select><br>
+
             <label for="fecha_compromiso">Fecha Compromiso:</label>
             <input type="datetime-local" id="fecha_compromiso" name="fecha_compromiso" value="" required class="inputs"><br>
 
@@ -62,7 +72,7 @@
         <?php
         if (isset($_GET['id'])) {
             $taskId = $_GET['id'];
-            echo "válido.".$taskId;
+            
 
             if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 // Conectar a la base de datos (asegúrate de incluir tu archivo de conexión)
@@ -73,13 +83,12 @@
                 $descripcion = $_POST["descripcion"];
                 $estado = $_POST["estado"];
                 $fecha_compromiso = $_POST["fecha_compromiso"];
+                $tipo_ = $_POST["tipo"];
                 $responsable = $username;
                 $task1 = new task();
-                if($task1->edit_task($id,$titulo,$descripcion,$estado,$fecha_compromiso,$responsable)){
+                if($task1->edit_task($id,$titulo,$descripcion,$estado,$fecha_compromiso,$tipo_,$responsable)){
                     header("Location: dashboard.php");
                 }
-
-                
             }
         } else {
             // Si no se proporciona un ID válido, puedes manejar el caso de error aquí

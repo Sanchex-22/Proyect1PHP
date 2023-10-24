@@ -45,6 +45,7 @@ $username = $_SESSION["username"];
                 <th>description</th>
                 <th>status</th>
                 <th>fecha de compromiso</th>
+                <th>Categoria</th>
                 <th>Responsable</th>
                 <th>etiqueta</th>
                 <th>option</th>
@@ -73,6 +74,7 @@ $username = $_SESSION["username"];
                     <td><?php echo $tarea['Descripcion']; ?></td>
                     <td><?php echo $tarea['Estado']; ?></td>
                     <td><?php echo $tarea['Fecha_Compromiso']; ?></td>
+                    <td><?php echo $tarea['Tipo_']; ?></td>
                     <td><?php echo $tarea['Responsable']; ?></td>
                     <td><?php echo $tarea['Etiqueta']; ?></td>
                     <td>

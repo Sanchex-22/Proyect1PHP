@@ -49,6 +49,16 @@
                 <option value="Terminada">Terminada</option>
             </select><br>
 
+            <label for="tipo">Categoria:</label>
+            <select id="tipo" name="tipo" required class="inputs">
+                <option value="Escolar">Escolar</option>
+                <option value="Del Hogar">Del Hogar</option>
+                <option value="Obligatorio" >Obligatorio</option>
+                <option value="Rutinario" >Rutinario</option>
+                <option value="Temporal" >Temporal</option>
+                <option value="Otro" >Otro</option>
+            </select><br>
+
             <label for="fecha_compromiso">Fecha Compromiso:</label><br>
             <input type="datetime-local" id="fecha_compromiso" name="fecha_compromiso" required class="inputs"><br>
 
@@ -65,9 +75,10 @@
             $descripcion = $_POST["descripcion"];
             $estado = $_POST["estado"];
             $fecha_compromiso = $_POST["fecha_compromiso"];
+            $tipo_ = $_POST["tipo"];
             $responsable = $username;
             $task1 = new task();
-            $task1->create_task($titulo,$descripcion,$estado,$fecha_compromiso,$responsable);
+            $task1->create_task($titulo,$descripcion,$estado,$fecha_compromiso,$tipo_,$responsable);
         }
         ?>
     </div>

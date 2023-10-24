@@ -19,10 +19,6 @@
             <form class="formulario" action="" method="post">
                 <label for="user">Usuario</label>
                 <input type="text" id="username" name="username" required>
-
-                <label for="pass">Contraseña</label>
-                <input type="password" id="password" name="password" required>
-
                 <input class="login-btn" type="submit" value="Iniciar Sesión">
             </form>
         </div>
@@ -39,10 +35,9 @@
 
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $username = $_POST["username"];
-            $password = $_POST["password"];
 
             $auth = new users();
-            if ($auth->autenticar($username, $password)) {
+            if ($auth->autenticar($username)) {
                 $_SESSION["username"] = $username;
                 header("Location: dashboard.php");
                 exit();

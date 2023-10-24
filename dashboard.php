@@ -62,13 +62,13 @@ $username = $_SESSION["username"];
             $tareas = $tarea->consultar_task();
 
             foreach ($tareas as $tarea) {
-                if ($tarea['Estado'] === 'En Proceso') {
+                if ($tarea['Estado'] === 'En Progreso') {
                     $tareasEnProceso[] = $tarea;
                 } 
                 else if($tarea['Estado'] === 'Por Hacer') {
                     $tareasPorHacer[] = $tarea;
                 }
-                else{
+                else if ($tarea['Estado'] === 'Terminada'){
                     $tareasTerminadas[] = $tarea;
                 }
             }
@@ -87,6 +87,7 @@ $username = $_SESSION["username"];
                         <h4>Titulo:<?php echo $tarea['Titulo']; ?> <span style="color: gray;"><?php echo $tarea['Etiqueta']; ?></span></h4>
                         <p>Estado:<?php echo $tarea['Estado']; ?></p>
                         <p><?php echo $tarea['Descripcion']; ?></p>
+                        <p>Categoria:<?php echo $tarea['Tipo_']; ?></p>
                         <p>por:<?php echo $tarea['Responsable']; ?></p>
                         <p>fecha:<?php echo $tarea['Fecha_Compromiso']; ?></p>
                     </div>
@@ -100,7 +101,7 @@ $username = $_SESSION["username"];
         </div>
 
         <div class="card2">
-            <div class="tittle-card2"><h3>En Proceso</h3></div>
+            <div class="tittle-card2"><h3>En Progreso</h3></div>
 
             <!-- Tareas Mapping -->
             <?php if (!empty($tareasEnProceso)):?>
@@ -118,6 +119,7 @@ $username = $_SESSION["username"];
                         <h4>Titulo:<?php echo $tarea['Titulo']; ?><?php echo $tarea['Etiqueta']; ?></h4>
                         <p>Estado:<?php echo $tarea['Estado']; ?></p>
                         <p><?php echo $tarea['Descripcion']; ?></p>
+                        <p>Categoria:<?php echo $tarea['Tipo_']; ?></p>
                         <p>por:<?php echo $tarea['Responsable']; ?></p>
                         <p>fecha:<?php echo $tarea['Fecha_Compromiso']; ?></p>
                     </div>
@@ -149,6 +151,7 @@ $username = $_SESSION["username"];
                         <h4>Titulo:<?php echo $tarea['Titulo']; ?><?php echo $tarea['Etiqueta']; ?></h4>
                         <p>Estado:<?php echo $tarea['Estado']; ?></p>
                         <p><?php echo $tarea['Descripcion']; ?></p>
+                        <p>Categoria:<?php echo $tarea['Tipo_']; ?></p>
                         <p>por:<?php echo $tarea['Responsable']; ?></p>
                         <p>fecha:<?php echo $tarea['Fecha_Compromiso']; ?></p>
                     </div>
