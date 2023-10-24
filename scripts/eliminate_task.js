@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const eliminateButtons = document.querySelectorAll('.eliminate-btn');
+    const eliminateButtons = document.querySelectorAll('.btn-eliminar');
     
     eliminateButtons.forEach(button => {
         button.addEventListener('click', function() {

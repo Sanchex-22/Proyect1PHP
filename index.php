@@ -5,23 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tareas PHP</title>
     <link rel="stylesheet" href="index.css">
-    <link rel="stylesheet" href="/css/login.css">
+    <link rel="stylesheet" href="css/login.css">
 </head>
 <body>
     <Nav class="navbar">
-        <ul class="nav-izq"><img src="#" alt="logo"></ul>
+        <li>
+            <img src="img/logo.png" alt="logo" style="height: 40px; width: 40px;">
+        </li>
     </Nav>
     <div class="login">
-        <h1>Login</h1>
-        <form class="formulario" action="" method="post">
-            <label for="user">Usuario</label>
-            <input type="text" id="username" name="username" required>
+        <div class="card-login">
+            <h1>Login</h1>
+            <form class="formulario" action="" method="post">
+                <label for="user">Usuario</label>
+                <input type="text" id="username" name="username" required>
+                <input class="login-btn" type="submit" value="Iniciar Sesión">
+            </form>
+        </div>
 
-            <label for="pass">Contraseña</label>
-            <input type="password" id="password" name="password" required>
-
-            <input class="login-btn" type="submit" value="Iniciar Sesión">
-        </form>
         
         <?php
         session_start();
@@ -34,10 +35,9 @@
 
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $username = $_POST["username"];
-            $password = $_POST["password"];
 
             $auth = new users();
-            if ($auth->autenticar($username, $password)) {
+            if ($auth->autenticar($username)) {
                 $_SESSION["username"] = $username;
                 header("Location: dashboard.php");
                 exit();
@@ -50,5 +50,6 @@
 
         
     </div>
+
 </body>
 </html>
